@@ -1277,7 +1277,10 @@ namespace cryptonote
      */
     inline uint64_t compute_generated_coins(uint64_t block_reward, uint64_t prev_generated_coins)
     {
-      return (block_reward < (((uint64_t)(-1)) - prev_generated_coins) ? prev_generated_coins + block_reward : ((uint64_t)(-1)));
+      //return (block_reward < (((uint64_t)(-1)) - prev_generated_coins) ? prev_generated_coins + block_reward : ((uint64_t)(-1)));
+	  //money supply = 100,000,000,000.000000 cryg
+	  #define CRYG_MONEY_SUPPLY	(uint64_t)(100000000000000000)
+      return (block_reward < (CRYG_MONEY_SUPPLY - prev_generated_coins) ? prev_generated_coins + block_reward : CRYG_MONEY_SUPPLY);
     }
 
     /**

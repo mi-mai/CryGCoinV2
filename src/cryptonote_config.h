@@ -44,7 +44,7 @@
 #define CRYPTONOTE_MAX_BLOCK_SIZE                       500000000  // block header blob limit, never used!
 #define CRYPTONOTE_MAX_TX_SIZE                          1000000000
 #define CRYPTONOTE_PUBLIC_ADDRESS_TEXTBLOB_VER          0
-#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW            360
+#define CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW            40
 #define CURRENT_TRANSACTION_VERSION                     1
 #define CURRENT_BLOCK_MAJOR_VERSION                     1
 #define CURRENT_BLOCK_MINOR_VERSION                     1
@@ -52,14 +52,15 @@
 
 #define BULLETPROOF_MAX_OUTPUTS                         16
 #define BULLETPROOF_SIMPLE_FORK_HEIGHT                  1
-#define BULLETPROOF_FULL_FORK_HEIGHT                    2
+#define BULLETPROOF_FULL_FORK_HEIGHT                    1 //2
 
 #define BLOCKCHAIN_TIMESTAMP_CHECK_WINDOW               12
 #define CRYPTONOTE_BLOCK_FUTURE_TIME_LIMIT              60*5
 
-#define BLOCK_REWARD                                    ((uint64_t)186000000)         //186 amit
-#define GENESIS_BLOCK_REWARD                            ((uint64_t)26859932000000)    //26,859,932.000000 amit
-#define PER_KB_BASE_FEE                                 ((uint64_t)5000)              //0.005 amit                           
+#define BLOCK_REWARD                                    ((uint64_t)25000000)          //25 cryg
+#define GENESIS_BLOCK_REWARD							((uint64_t)151293269480000)	  //151,293,269.480000 cryg
+
+#define PER_KB_BASE_FEE                                 ((uint64_t)5000)              //0.005 cryg
 
 #define CRYPTONOTE_REWARD_BLOCKS_WINDOW                 100
 #define CRYPTONOTE_BLOCK_GRANTED_FULL_REWARD_ZONE       300000
@@ -116,7 +117,7 @@
 
 //#define ALLOW_DEBUG_COMMANDS
 
-#define CRYPTONOTE_NAME                                 "amity"
+#define CRYPTONOTE_NAME                                 "crygcoin"
 #define CRYPTONOTE_POOLDATA_FILENAME                    "poolstate.bin"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME              "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME         "lock.mdb"
@@ -127,7 +128,7 @@
 #define HASH_OF_HASHES_STEP                             256
 #define DEFAULT_TXPOOL_MAX_SIZE                         648000000ull // 3 days at 300000, in bytes
 
-#define DONATION_ADDR "amitGvbEpdH6vcmWR3qXd9XXyud78DQfM84D2P9NMpJEV9iZFTTrmP5f6kUwWVmfNBXyMs4AufNUoUrGsqwfUn1L695cS6EkwC"
+#define DONATION_ADDR "xxxxxxx"
 
 struct hard_fork
 {
@@ -142,15 +143,15 @@ namespace config
     std::string const P2P_REMOTE_DEBUG_TRUSTED_PUB_KEY = "0000000000000000000000000000000000000000000000000000000000000000";
 
     //Forker: change prefix, net id, port
-    uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x1bf3c9; //amit
-    uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x5cd49; //aint
-    uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x29054a; //asub
-    uint16_t const P2P_DEFAULT_PORT = 41018;
-    uint16_t const RPC_DEFAULT_PORT = 51018;
-    uint16_t const ZMQ_RPC_DEFAULT_PORT = 37113;
-    boost::uuids::uuid const NETWORK_ID = {{0x42, 0x38, 0xB1, 0x75, 0x01, 0x82, 0x16, 0xA1, 0x61, 0x04, 0x41, 0x21, 0x17, 0x31, 0xB1, 0x52}};
+    uint64_t const CRYPTONOTE_PUBLIC_ADDRESS_BASE58_PREFIX = 0x1ca9d3; //cRyg
+    uint64_t const CRYPTONOTE_PUBLIC_INTEGRATED_ADDRESS_BASE58_PREFIX = 0x5cd49; //cint
+    uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x3ef5d3; //cSub
+    uint16_t const P2P_DEFAULT_PORT = 18887
+    uint16_t const RPC_DEFAULT_PORT = 28887;
+    uint16_t const ZMQ_RPC_DEFAULT_PORT = 17113;
+    boost::uuids::uuid const NETWORK_ID = {{0x42, 0xF8, 0xB1, 0x75, 0x01, 0x82, 0x16, 0xA1, 0x61, 0x04, 0x41, 0x21, 0x17, 0x31, 0xB1, 0x52}};
     std::string const GENESIS_TX = 
-    "01e80201ff000180bed285dd8d06026ca32c5a66b9d7cb7cb76dbea605fffe5f501ddec0d0dec193c5fea177589a8d21012137037f61b653a39be231017497f553868213197f35d74761474c30b66a99b800";
+    "xxxxxxxxx";
 
     uint32_t const GENESIS_NONCE = 10000;
 
@@ -158,23 +159,22 @@ namespace config
     std::string const MIN_VERSION    = "0.0.0.1";
     
     std::vector<std::string> const seed_nodes = { 
-        "51.75.92.73:41018", // GERMANY
-        "54.39.178.95:41018", // CANADA
-        "3.17.204.129:41018", // USA
-        "3.0.147.172:41018" // SINGAPORE
+        "nd1.cryg.xyz:18887", // nd1
+        "nd2.cryg.xyz:18887", // nd2
+        "nd3.cryg.xyz:18887", // nd3
+        "nd4.cryg.xyz:18887" // nd4
     };
 
     static const hard_fork hard_forks[] = {
         { 1,   1},
-        { 2, 550},
     };
 
     namespace testnet
     {
-        uint16_t const P2P_DEFAULT_PORT = 21111;
-        uint16_t const RPC_DEFAULT_PORT = 31112;
+        uint16_t const P2P_DEFAULT_PORT = 11886;
+        uint16_t const RPC_DEFAULT_PORT = 11887;
         uint16_t const ZMQ_RPC_DEFAULT_PORT = 18113;
-        boost::uuids::uuid const NETWORK_ID = {{0x93, 0x42, 0xF0, 0x55, 0x42, 0x18, 0x60, 0x33, 0x16, 0x81, 0x01, 0x92, 0xAA, 0xAC, 0xFF, 0x43}};
+        boost::uuids::uuid const NETWORK_ID = {{0x93, 0x42, 0xF0, 0x55, 0x42, 0x18, 0x60, 0x33, 0x16, 0x81, 0x51, 0x92, 0xAA, 0xAC, 0xFF, 0x43}};
 		
         std::string const HF_MIN_VERSION = "0.0.0.1";
         std::string const MIN_VERSION    = "0.0.0.1";
@@ -186,24 +186,22 @@ namespace config
 
         static const hard_fork hard_forks[] = {
             { 1,   1},
-            { 2, 550},
         };
     }
 
     namespace stagenet
     {
-        uint16_t const P2P_DEFAULT_PORT = 19111;
-        uint16_t const RPC_DEFAULT_PORT = 19112;
+        uint16_t const P2P_DEFAULT_PORT = 12886;
+        uint16_t const RPC_DEFAULT_PORT = 12887;
         uint16_t const ZMQ_RPC_DEFAULT_PORT = 19113;
         boost::uuids::uuid const NETWORK_ID = { {
-            0x24, 0x31, 0xF1, 0x72 , 0x54, 0x36 , 0x36, 0xFF, 0xBB, 0x51, 0x00, 0x3C, 0x3D, 0xAA, 0x16, 0x2F
+            0x24, 0x31, 0xF1, 0x72 , 0x54, 0x36 , 0x36, 0x1F, 0xBB, 0x51, 0x00, 0x3C, 0x3D, 0xAA, 0x16, 0x2F
         } }; // Bender's daydream
 
 		std::vector<std::string> const seed_nodes = { };
 
         static const hard_fork hard_forks[] = {
             { 1,   1},
-            { 2, 550},
         };
     }
 }
