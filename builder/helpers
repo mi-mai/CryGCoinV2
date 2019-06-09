@@ -1,28 +1,28 @@
 #!/bin/bash
 
 BUILDER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AMITY_DIR=$(dirname $BUILDER_DIR)
+CRYG_DIR=$(dirname $BUILDER_DIR)
 
 if [ -z ${REPO_NAME_FULL} ]; then
-	export REPO_NAME_FULL=AMITY
+	export REPO_NAME_FULL=CRYG
 fi
 
 if [ -z ${REPO_NAME} ]; then
-	export REPO_NAME=amity
+	export REPO_NAME=cryg
 fi
 
 if [ $(uname) == "Linux" ]; then
 
 	function installdeps()
 	{
-		if [ $AMITY_BUILD_DISTRO == "ubuntu" ] || [ $AMITY_BUILD_DISTRO == "debian" ]; then
+		if [ $CRYG_BUILD_DISTRO == "ubuntu" ] || [ $CRYG_BUILD_DISTRO == "debian" ]; then
 			sudo apt install -y \
 			git curl ca-certificates nano zip unzip tar xz-utils cmake g++ make pkg-config libtool-bin autoconf \
 			automake build-essential cmake pkg-config pcsc-tools pcscd libpcsclite1 python-dev virtualenv \
 			libudev-dev libhidapi-dev libzmq3-dev libunbound-dev libboost-all-dev libusb-1.0-0-dev libusb-dev \
 			libssl-dev libsodium-dev libcurl4-openssl-dev libminiupnpc-dev libunwind8-dev liblzma-dev \
 			libreadline6-dev libldns-dev libexpat1-dev libgtest-dev doxygen graphviz libhidapi-libusb0
-		elif [ $AMITY_BUILD_DISTRO == "fedora" ]; then
+		elif [ $CRYG_BUILD_DISTRO == "fedora" ]; then
 			sudo dnf install -y \
 			make automake cmake gcc-c++ boost-devel miniupnpc-devel graphviz \
 			doxygen unbound-devel libunwind-devel pkgconfig cppzmq-devel openssl-devel --setopt=install_weak_deps=
@@ -110,7 +110,7 @@ elif [ $(uname) == "Darwin" ]; then
 		if ! [ -f "/usr/local/lib/libcurl.a" ]; then
 			#build libcurl if not already built
 			if ! [ -d ${BUILDER_DIR}/curl ]; then
-				cd ${AMITY_DIR}/external/curl
+				cd ${CRYG_DIR}/external/curl
 				./buildconf
 
 				./configure --prefix="/Users/virtual/nerva/builder/curl" --without-ssl --disable-dict --disable-ftp --disable-gopher \
@@ -150,7 +150,7 @@ fi
 function detectos()
 {
 	if [ "$(uname)" == "Linux" ]; then
-		if [[ -z "${AMITY_BUILD_DISTRO}" ]]; then
+		if [[ -z "${CRYG_BUILD_DISTRO}" ]]; then
 			local os_distro="unknown"
 
 			if [ -f /etc/os-release ]; then
@@ -161,25 +161,25 @@ function detectos()
 				os_distro=$DISTRIB_ID
 			fi
 		fi
-		export AMITY_BUILD_OS="linux"
-		export AMITY_BUILD_DISTRO=${os_distro}
+		export CRYG_BUILD_OS="linux"
+		export CRYG_BUILD_DISTRO=${os_distro}
 	elif [ "$(uname)" == "Darwin" ]; then
-		export AMITY_BUILD_OS="osx"
+		export CRYG_BUILD_OS="osx"
 	elif [ "$(expr substr $(uname -s) 1 7)" == "MINGW64" ]; then
-		export AMITY_BUILD_OS="windows"
+		export CRYG_BUILD_OS="windows"
 	else
 		echo "Unsupported OS"
 		exit 0
 	fi
 
-	echo OS detected ${AMITY_BUILD_OS} ${AMITY_BUILD_DISTRO}
+	echo OS detected ${CRYG_BUILD_OS} ${CRYG_BUILD_DISTRO}
 }
 
 function detectversion()
 {
-    ver=$(awk '/#define DEF_MONERO_VERSION /{ print $3 }' < ${AMITY_DIR}/src/version.cpp.in)
-	name=$(awk '/#define DEF_MONERO_RELEASE_NAME /{ print $3 }' < ${AMITY_DIR}/src/version.cpp.in)
-    export AMITY_VERSION=$(echo ${ver} | tr -d '"')
-	export AMITY_CODENAME=$(echo ${name} | tr -d '"')
-    echo Version detected as ${REPO_NAME_FULL} ${AMITY_VERSION}: ${AMITY_CODENAME}
+    ver=$(awk '/#define DEF_MONERO_VERSION /{ print $3 }' < ${CRYG_DIR}/src/version.cpp.in)
+	name=$(awk '/#define DEF_MONERO_RELEASE_NAME /{ print $3 }' < ${CRYG_DIR}/src/version.cpp.in)
+    export CRYG_VERSION=$(echo ${ver} | tr -d '"')
+	export CRYG_CODENAME=$(echo ${name} | tr -d '"')
+    echo Version detected as ${REPO_NAME_FULL} ${CRYG_VERSION}: ${CRYG_CODENAME}
 }

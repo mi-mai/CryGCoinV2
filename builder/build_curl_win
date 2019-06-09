@@ -2,13 +2,13 @@
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 BUILDER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AMITY_DIR=$(dirname $BUILDER_DIR)
+CRYG_DIR=$(dirname $BUILDER_DIR)
 
 if [ -d "${BUILDER_DIR}/curl" ]; then
 	rm -rf "${BUILDER_DIR}/curl"
 fi
 
-cd "${AMITY_DIR}/external/curl"
+cd "${CRYG_DIR}/external/curl"
 
 export "CPPFLAGS=-I/mingw32/local/include -O3"
 export "LDFLAGS=-L/mingw32/local/lib -mwindows"

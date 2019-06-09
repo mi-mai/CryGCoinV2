@@ -2,13 +2,13 @@
 dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 BUILDER_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AMITY_DIR=$(dirname $BUILDER_DIR)
+CRYG_DIR=$(dirname $BUILDER_DIR)
 
 if [ -d "${BUILDER_DIR}/curl" ]; then
 	rm -rf "${BUILDER_DIR}/curl"
 fi
 
-cd "${AMITY_DIR}/external/curl"
+cd "${CRYG_DIR}/external/curl"
 ./buildconf
 
 LIBS="-ldl -lpthread" ./configure --prefix="${BUILDER_DIR}/curl" --without-ssl --without-zlib --disable-dict --disable-ftp --disable-gopher \
