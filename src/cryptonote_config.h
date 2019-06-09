@@ -128,7 +128,7 @@
 #define HASH_OF_HASHES_STEP                             256
 #define DEFAULT_TXPOOL_MAX_SIZE                         648000000ull // 3 days at 300000, in bytes
 
-#define DONATION_ADDR "xxxxxxx"
+#define DONATION_ADDR "cRygGQzVPm9JXE7Y7tnumWF6epk8GGxf2APCVTGbgRuNaqDio7zqry447pxJU3MX5XF6GGkyUdMA2DPrcxSfYMG56xJ2eVcWhv"
 
 struct hard_fork
 {
@@ -150,8 +150,7 @@ namespace config
     uint16_t const RPC_DEFAULT_PORT = 28887;
     uint16_t const ZMQ_RPC_DEFAULT_PORT = 17113;
     boost::uuids::uuid const NETWORK_ID = {{0x42, 0xF8, 0xB1, 0x75, 0x01, 0x82, 0x16, 0xA1, 0x61, 0x04, 0x41, 0x21, 0x17, 0x31, 0xB1, 0x52}};
-    std::string const GENESIS_TX = 
-    "xxxxxxxxx";
+    std::string const GENESIS_TX = "012801ff0001c0a4d6ac9bb322026008d7185a955bc3905903a8fddb02721ed20e0a6b72b94e8db1e5bf7ad7c83b21019d6d31140b547874c195356bb71239d9a0a241486a2222131498ab5da84845dc00";
 
     uint32_t const GENESIS_NONCE = 10000;
 
