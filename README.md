@@ -1,4 +1,6 @@
-# AMITY
+# CryGCoin
+
+Copyright (c) 2018 The CryGCoin Project.
 
 Copyright (c) 2018 The Amity Project.
 
@@ -26,8 +28,8 @@ See [LICENSE](LICENSE).
   
  ##### Build Commands
 
--`git clone --recursive https://github.com/CalexCore/AmityCoinV3.git`  
--`cd AmityCoinV3`  
+-`git clone --recursive https://github.com/mi-mai/CryGCoinV2.git`  
+-`cd CrygCoinV3`  
 -`./builder/linux`
   
 Binaries will be found in `/builder/build/release/bin/`
