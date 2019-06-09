@@ -117,11 +117,11 @@
 
 //#define ALLOW_DEBUG_COMMANDS
 
-#define CRYPTONOTE_NAME                                 "crygcoin"
+#define CRYPTONOTE_NAME                                 "cryg"
 #define CRYPTONOTE_POOLDATA_FILENAME                    "poolstate.bin"
 #define CRYPTONOTE_BLOCKCHAINDATA_FILENAME              "data.mdb"
 #define CRYPTONOTE_BLOCKCHAINDATA_LOCK_FILENAME         "lock.mdb"
-#define P2P_NET_DATA_FILENAME                           "p2pstate.amity.bin"
+#define P2P_NET_DATA_FILENAME                           "p2pstate.cryg.bin"
 #define MINER_CONFIG_FILE_NAME                          "miner_conf.json"
 
 #define THREAD_STACK_SIZE                               5 * 1024 * 1024
