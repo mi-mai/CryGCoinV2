@@ -29,7 +29,7 @@ See [LICENSE](LICENSE).
  ##### Build Commands
 
 -`git clone --recursive https://github.com/mi-mai/CryGCoinV2.git`  
--`cd CrygCoinV3`  
+-`cd CryGCoinV2`  
 -`./builder/linux`
   
 Binaries will be found in `/builder/build/release/bin/`
