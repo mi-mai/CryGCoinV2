@@ -69,7 +69,7 @@ namespace
   const command_line::arg_descriptor<std::string> arg_wallet_dir = {"wallet-dir", "Directory for newly created wallets"};
   const command_line::arg_descriptor<bool> arg_prompt_for_password = {"prompt-for-password", "Prompts for password when not provided", false};
 
-  constexpr const char default_rpc_username[] = "amity";
+  constexpr const char default_rpc_username[] = "cryg";
 
   boost::optional<tools::password_container> password_prompter(const char *prompt, bool verify)
   {
@@ -211,7 +211,7 @@ namespace tools
           string_encoding::base64_encode(rand_128bit.data(), rand_128bit.size())
         );
 
-        std::string temp = "amity-wallet-rpc." + bind_port + ".login";
+        std::string temp = "cryg-wallet-rpc." + bind_port + ".login";
         rpc_login_file = tools::private_file::create(temp);
         if (!rpc_login_file.handle())
         {
@@ -673,7 +673,7 @@ namespace tools
           }
           if (addresses.empty())
           {
-            er.message = std::string("No Amity address found at ") + url;
+            er.message = std::string("No Cryg address found at ") + url;
             return {};
           }
           return addresses[0];
@@ -1871,7 +1871,7 @@ namespace tools
         }
         if (addresses.empty())
         {
-          er.message = std::string("No Amity address found at ") + url;
+          er.message = std::string("No Cryg address found at ") + url;
           return {};
         }
         return addresses[0];
@@ -2658,7 +2658,7 @@ namespace tools
         }
         if (addresses.empty())
         {
-          er.message = std::string("No Amity address found at ") + url;
+          er.message = std::string("No Cryg address found at ") + url;
           return {};
         }
         return addresses[0];
@@ -4480,12 +4480,12 @@ int main(int argc, char** argv) {
   bool should_terminate = false;
   std::tie(vm, should_terminate) = wallet_args::main(
     argc, argv,
-    "amity-wallet-rpc [--wallet-file=<file>|--generate-from-json=<file>|--wallet-dir=<directory>] [--rpc-bind-port=<port>]",
-    tools::wallet_rpc_server::tr("This is the RPC Amity wallet. It needs to connect to a Amity\ndaemon to work correctly."),
+    "cryg-wallet-rpc [--wallet-file=<file>|--generate-from-json=<file>|--wallet-dir=<directory>] [--rpc-bind-port=<port>]",
+    tools::wallet_rpc_server::tr("This is the RPC Cryg wallet. It needs to connect to a Cryg\ndaemon to work correctly."),
     desc_params,
     po::positional_options_description(),
     [](const std::string &s, bool emphasis){ epee::set_console_color(emphasis ? epee::console_color_white : epee::console_color_default, true); std::cout << s << std::endl; if (emphasis) epee::reset_console_color(); },
-    "amity-wallet-rpc.log",
+    "cryg-wallet-rpc.log",
     true
   );
   if (!vm)

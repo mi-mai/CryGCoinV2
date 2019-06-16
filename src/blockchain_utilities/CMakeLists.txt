@@ -147,7 +147,7 @@ endif()
 
 set_property(TARGET blockchain_import
 	PROPERTY
-	OUTPUT_NAME "amity-blockchain-import")
+	OUTPUT_NAME "cryg-blockchain-import")
 install(TARGETS blockchain_import DESTINATION bin)
 
 monero_add_executable(blockchain_export
@@ -168,7 +168,7 @@ target_link_libraries(blockchain_export
 
 set_property(TARGET blockchain_export
 	PROPERTY
-	OUTPUT_NAME "amity-blockchain-export")
+	OUTPUT_NAME "cryg-blockchain-export")
 install(TARGETS blockchain_export DESTINATION bin)
 
 monero_add_executable(quicksync_export
@@ -188,7 +188,7 @@ target_link_libraries(quicksync_export
     ${EXTRA_LIBRARIES})
 set_property(TARGET quicksync_export
 	PROPERTY
-	OUTPUT_NAME "amity-quicksync-export")
+	OUTPUT_NAME "cryg-quicksync-export")
 install(TARGETS quicksync_export DESTINATION bin)
 
 
@@ -210,7 +210,7 @@ target_link_libraries(blockchain_usage
 
 set_property(TARGET blockchain_usage
 	PROPERTY
-	OUTPUT_NAME "amity-blockchain-usage")
+	OUTPUT_NAME "cryg-blockchain-usage")
 install(TARGETS blockchain_usage DESTINATION bin)
 
 monero_add_executable(blockchain_ancestry
@@ -231,7 +231,7 @@ target_link_libraries(blockchain_ancestry
 
 set_property(TARGET blockchain_ancestry
 	PROPERTY
-	OUTPUT_NAME "amity-blockchain-ancestry")
+	OUTPUT_NAME "cryg-blockchain-ancestry")
 install(TARGETS blockchain_ancestry DESTINATION bin)
 
 monero_add_executable(blockchain_depth
@@ -252,7 +252,7 @@ target_link_libraries(blockchain_depth
 
 set_property(TARGET blockchain_depth
 	PROPERTY
-	OUTPUT_NAME "amity-blockchain-depth")
+	OUTPUT_NAME "cryg-blockchain-depth")
 install(TARGETS blockchain_depth DESTINATION bin)
 
 monero_add_executable(blockchain_stats
@@ -273,5 +273,5 @@ target_link_libraries(blockchain_stats
 
 set_property(TARGET blockchain_stats
 	PROPERTY
-	OUTPUT_NAME "amity-blockchain-stats")
+	OUTPUT_NAME "cryg-blockchain-stats")
 install(TARGETS blockchain_stats DESTINATION bin)

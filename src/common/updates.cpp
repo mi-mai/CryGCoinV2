@@ -44,7 +44,7 @@ namespace tools
     bool found = false;
 
     static const std::vector<std::string> dns_urls = {
-      "update.getamitycoin.org",
+      "update.getcrygcoin.org",
     };
 
     if (!tools::dns_utils::load_txt_records_from_dns(records, dns_urls))
@@ -83,6 +83,6 @@ namespace tools
   std::string get_update_url(const std::string &software, const std::string &buildtag, const std::string &version)
   {
     //Forker: updatew to the url where binaries are hosted
-    return "https://getamitycoin.org/content/binaries/" + software + "-v" + version + "_" + buildtag + ".zip";
+    return "https://getcrygcoin.org/content/binaries/" + software + "-v" + version + "_" + buildtag + ".zip";
   }
 }

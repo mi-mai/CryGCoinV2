@@ -99,9 +99,9 @@ using namespace cryptonote;
 // arbitrary, used to generate different hashes from the same input
 #define CACHE_KEY_TAIL 0x8e
 
-#define UNSIGNED_TX_PREFIX "Amity unsigned tx set\004"
-#define SIGNED_TX_PREFIX "Amity signed tx set\004"
-#define MULTISIG_UNSIGNED_TX_PREFIX "Amity multisig unsigned tx set\001"
+#define UNSIGNED_TX_PREFIX "Cryg unsigned tx set\004"
+#define SIGNED_TX_PREFIX "Cryg signed tx set\004"
+#define MULTISIG_UNSIGNED_TX_PREFIX "Cryg multisig unsigned tx set\001"
 
 #define RECENT_OUTPUT_RATIO (0.5) // 50% of outputs are from the recent zone
 #define RECENT_OUTPUT_DAYS (1.8) // last 1.8 day makes up the recent zone (taken from monerolink.pdf, Miller et al)
@@ -113,9 +113,9 @@ using namespace cryptonote;
 #define SUBADDRESS_LOOKAHEAD_MAJOR 50
 #define SUBADDRESS_LOOKAHEAD_MINOR 200
 
-#define KEY_IMAGE_EXPORT_FILE_MAGIC "Amity key image export\002"
-#define MULTISIG_EXPORT_FILE_MAGIC "Amity multisig export\001"
-#define OUTPUT_EXPORT_FILE_MAGIC "Amity output export\003"
+#define KEY_IMAGE_EXPORT_FILE_MAGIC "Cryg key image export\002"
+#define MULTISIG_EXPORT_FILE_MAGIC "Cryg multisig export\001"
+#define OUTPUT_EXPORT_FILE_MAGIC "Cryg output export\003"
 
 #define SEGREGATION_FORK_HEIGHT 99999999
 #define TESTNET_SEGREGATION_FORK_HEIGHT 99999999
@@ -1577,8 +1577,8 @@ void wallet2::scan_output(const cryptonote::transaction &tx, bool miner_tx, cons
     if (!m_encrypt_keys_after_refresh)
     {
       boost::optional<epee::wipeable_string> pwd = m_callback->on_get_password(pool ? "output found in pool" : "output received");
-      THROW_WALLET_EXCEPTION_IF(!pwd, error::password_needed, tr("Password is needed to compute key image for incoming amity"));
-      THROW_WALLET_EXCEPTION_IF(!verify_password(*pwd), error::password_needed, tr("Invalid password: password is needed to compute key image for incoming amity"));
+      THROW_WALLET_EXCEPTION_IF(!pwd, error::password_needed, tr("Password is needed to compute key image for incoming cryg"));
+      THROW_WALLET_EXCEPTION_IF(!verify_password(*pwd), error::password_needed, tr("Invalid password: password is needed to compute key image for incoming cryg"));
       decrypt_keys(*pwd);
       m_encrypt_keys_after_refresh = *pwd;
     }
@@ -12156,7 +12156,7 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
     }
   }
 
-  std::string uri = "amity:" + address;
+  std::string uri = "cryg:" + address;
   unsigned int n_fields = 0;
 
   if (!payment_id.empty())
@@ -12185,9 +12185,9 @@ std::string wallet2::make_uri(const std::string &address, const std::string &pay
 //----------------------------------------------------------------------------------------------------
 bool wallet2::parse_uri(const std::string &uri, std::string &address, std::string &payment_id, uint64_t &amount, std::string &tx_description, std::string &recipient_name, std::vector<std::string> &unknown_parameters, std::string &error)
 {
-  if (uri.substr(0, 6) != "amity:")
+  if (uri.substr(0, 6) != "cryg:")
   {
-    error = std::string("URI has wrong scheme (expected \"amity:\"): ") + uri;
+    error = std::string("URI has wrong scheme (expected \"cryg:\"): ") + uri;
     return false;
   }
 

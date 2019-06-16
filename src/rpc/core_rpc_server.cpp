@@ -2219,7 +2219,7 @@ namespace cryptonote
   bool core_rpc_server::on_update(const COMMAND_RPC_UPDATE::request& req, COMMAND_RPC_UPDATE::response& res, const connection_context *ctx)
   {
     PERF_TIMER(on_update);
-    static const char software[] = "amity-cli";
+    static const char software[] = "cryg-cli";
 #ifdef BUILD_TAG
     static const char buildtag[] = BOOST_PP_STRINGIZE(BUILD_TAG);
 #else

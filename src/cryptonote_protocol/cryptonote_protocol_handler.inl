@@ -312,7 +312,7 @@ namespace cryptonote
         if (version < hshd.top_version && version == m_core.get_ideal_hard_fork_version())
           MGUSER_RED(context << " peer claims higher version (" <<
               (unsigned)hshd.top_version << " for " << (hshd.current_height - 1) << " instead of " << (unsigned)version <<
-              ") - check https://getamitycoin.org for updates");
+              ") - check https://getcrygcoin.org for updates");
         return false;
       }
     }
@@ -1844,7 +1844,7 @@ skip:
     if(m_synchronized.compare_exchange_strong(val_expected, true))
     {
       MGUSER_YELLOW(ENDL << "**********************************************************************" << ENDL
-        << "You are now synchronized with the network. You may now start amity-wallet-cli." << ENDL
+        << "You are now synchronized with the network. You may now start cryg-wallet-cli." << ENDL
         << ENDL
         << "Use the \"help\" command to see the list of available commands." << ENDL
         << "**********************************************************************");
@@ -2101,7 +2101,7 @@ skip:
       MINFO("Target height decreasing from " << previous_target << " to " << target);
       m_core.set_target_blockchain_height(target);
       if (target == 0 && context.m_state > cryptonote_connection_context::state_before_handshake && !m_stopping)
-        MGUSER_RED("amityd is now disconnected from the network");
+        MGUSER_RED("crygd is now disconnected from the network");
     }
 
     m_block_queue.flush_spans(context.m_connection_id, false);

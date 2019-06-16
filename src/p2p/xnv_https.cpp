@@ -91,7 +91,7 @@ namespace analytics
             std::string url = "http://" + xnvhttp::get_host(a) + "/api/submitanalytics.php";
             MGINFO("Sending analytics to " << url);
 
-            std::string user_agent = "amity-cli/";
+            std::string user_agent = "cryg-cli/";
             user_agent.append(MONERO_VERSION);
 
             CURL* curl = curl_easy_init(); 
